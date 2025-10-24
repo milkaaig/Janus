@@ -1,17 +1,10 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
-        circle = list(range(1, n + 1))
-        # listing all out players
+        win = 0
 
-        kSub = k - 1
-        # considering we count the friend we start with offset it by -1
-        i = 0
-
-        while len(circle) > 1:
-            i = (i + kSub) %  len(circle)
-            # the modulus allows us to find the right location even  when we are at the  end
-            # next time i will be next to the player we removed
-            circle.pop(i)
-
-        return circle[0]
+        #let's assume to add one person in the game at the time. At first there is only one, for that the winner is that player so no need to start from just one player but what if our friends start from 2 and keep going, we can track who the winner is from the begining
         
+        for i in range(2, n + 1):
+            win = (win + k) % i
+        
+        return win + 1
