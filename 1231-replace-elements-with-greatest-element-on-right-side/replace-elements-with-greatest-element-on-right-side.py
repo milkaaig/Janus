@@ -8,16 +8,16 @@ class Solution:
         if n == 2:
             return [arr[1],-1]
 
-        store = defaultdict(int)
-
+        
         greatest = max(arr[-1], arr[-2])
         for i in range(n-3, -1, -1):
-            store[i] = greatest
-            greatest = max(greatest, arr[i]) 
+
+            curr = arr[i]
+            arr[i] = greatest
+            greatest = max(greatest, curr) 
 
        
-        for key, val in store.items():
-            arr[key] = val
+        
 
         arr[-2] = arr[-1]
         arr[-1] = -1
