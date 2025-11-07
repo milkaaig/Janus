@@ -3,22 +3,28 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        dic = {0: 0, 1: 0, 2: 0}
-        n = len(nums)
-        c = 0
+        counter = {0: 0, 1: 0, 2: 0}
+        
 
-        for i in range(n):
-            dic[nums[i]] += 1
+        for n in nums:
+            counter[n] += 1
         
-        for i in range(dic[0]):
-            nums[c] = 0
-            c += 1
+        zerofreq = counter[0]
+        onefreq = counter[1]
+        twofreq = counter[2]
+
+        track = 0
+        n = len(nums)
+        for i in range(track,zerofreq):
+            nums[i] = 0
+
+        track += zerofreq
+
+        for j in range(track, (track + onefreq)):
+            nums[j]  = 1 
         
-        for i in range(dic[1]):
-            nums[c] = 1
-            c += 1
-        
-        for i in range(dic[2]):
-            nums[c] =2
-            c += 1
-        
+        track += onefreq
+
+        for k in range(track, (track + twofreq)):
+            nums[k] = 2
+                    
